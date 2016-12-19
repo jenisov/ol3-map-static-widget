@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-/*global Widget */
+/* global Widget */
 
 
 (function () {

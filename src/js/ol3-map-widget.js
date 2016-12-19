@@ -205,7 +205,7 @@
     };
 
     Widget.prototype.select_feature = function select_feature(feature) {
-        //this.selected_feature = feature;
+        // this.selected_feature = feature;
         this.center_popup_menu(feature);
     };
 
