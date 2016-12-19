@@ -1,3 +1,1 @@
-This widget allows you to [...]
-
-## References
+Display a map using an image an a custom coordintes system

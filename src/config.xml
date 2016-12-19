@@ -5,8 +5,12 @@
         <email>wirecloud@conwet.com</email>
         <image>images/catalogue.png</image>
         <description>Display a map using an image an a custom coordintes system</description>
-        <doc>doc/index.md</doc>
+        <doc>doc/userguide.md</doc>
+        <longdescription>DESCRIPTION.md</longdescription>
+        <changelog>doc/changelog.md</changelog>
         <authors>Álvaro Arranz &lt;aarranz@fi.upm.es&gt;</authors>
+        <homepage>https://github.com/Wirecloud/ol3-map-static-widget</homepage>
+        <issuetracker>https://github.com/Wirecloud/ol3-map-static-widget/issues</issuetracker>
     </details>
 
     <requirements>

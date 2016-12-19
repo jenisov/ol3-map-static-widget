@@ -1,6 +1,6 @@
 ## Introduction
 
-The best project ever.
+Display a map using an image an a custom coordintes system
 
 ## Settings
 
