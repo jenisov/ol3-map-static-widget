@@ -86,6 +86,17 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: 'node_modules/openlayers/dist',
+                        src: ['ol.js'],
+                        dest: "lib/js"
+                    }, {
+                        expand: true,
+                        cwd: 'node_modules/openlayers/dist',
+                        src: ['ol.css'],
+                        dest: "lib/css"
+                    },
+                    {
+                        expand: true,
                         cwd: 'build/src',
                         src: [
                             'js/**/*'
