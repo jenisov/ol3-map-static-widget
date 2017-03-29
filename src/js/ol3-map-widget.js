@@ -132,15 +132,16 @@
         iconFeature.set('data', poi_info.data);
         iconFeature.set('title', poi_info.title);
         iconFeature.set('content', poi_info.infoWindow);
+        var geometry, projection = 'EPSG:4326';
         if ('location' in poi_info) {
-            iconFeature.setGeometry(this.geojsonparser.readGeometry(poi_info.location).transform('EPSG:4326', 'EPSG:3857'));
+            geometry = this.geojsonparser.readGeometry(poi_info.location);
         } else {
-            iconFeature.setGeometry(
-                new ol.geom.Point(
-                    ol.proj.transform([poi_info.currentLocation.lng, poi_info.currentLocation.lat], 'EPSG:4326', 'EPSG:3857')
-                )
-            );
+            geometry = new ol.geom.Point([poi_info.currentLocation.lng, poi_info.currentLocation.lat]);
         }
+        if (!(this.base_layer.getSource() instanceof ol.source.ImageStatic)) {
+            geometry = geometry.transform(projection, this.map.getView().getProjection().getCode());
+        }
+        iconFeature.setGeometry(geometry);
 
         if (typeof poi_info.icon === 'string') {
             style = build_basic_style({
