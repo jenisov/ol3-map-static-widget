@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2015 CoNWeT Lab., Universidad Politécnica de Madrid
+ * Copyright (c) 2014-2017 CoNWeT Lab., Universidad Politécnica de Madrid
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,46 @@
     "use strict";
 
     var widget = new Widget('body', '#incoming-modal');
-    widget.init();
+    var layer = widget.createStaticLayer({
+        url: new URL(MashupPlatform.prefs.get('map_url'), document.location).toString(),
+        extent: MashupPlatform.prefs.get('extent').split(',').map(Number)
+    });
+    widget.init(layer);
+    widget.setBaseLayer({
+        type: "static",
+        url: new URL(MashupPlatform.prefs.get('map_url'), document.location).toString(),
+        extent: MashupPlatform.prefs.get('extent').split(',').map(Number)
+    });
+
+    MashupPlatform.wiring.registerCallback('poiInput', (poi_info) => {
+        if (typeof poi_info === "string") {
+            poi_info = JSON.parse(poi_info);
+        }
+        if (!Array.isArray(poi_info)) {
+            poi_info = [poi_info];
+        }
+        poi_info.forEach(widget.registerPoI, widget);
+    });
+
+    MashupPlatform.wiring.registerCallback('replacePoIs', (poi_info) => {
+        widget.vector_source.clear();
+        if (typeof poi_info === "string") {
+            poi_info = JSON.parse(poi_info);
+        }
+        if (!Array.isArray(poi_info)) {
+            poi_info = [poi_info];
+        }
+        poi_info.forEach(widget.registerPoI, widget);
+    });
+
+    MashupPlatform.wiring.registerCallback('deletePoiInput', (poi_info) => {
+        if (typeof poi_info === "string") {
+            poi_info = JSON.parse(poi_info);
+        }
+        if (!Array.isArray(poi_info)) {
+            poi_info = [poi_info];
+        }
+        poi_info.forEach(widget.removePoI, widget);
+    });
 
 })();

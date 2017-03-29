@@ -20,12 +20,16 @@
     <preferences>
         <preference name="map_url" label="Map URL" type="text" description="URL of the map to display inside the widget" default="images/map.png" />
         <preference name="extent" label="Coord mapping" type="text" description="Range of coords used by the image" default="0, 0, 84.1, 59.4" />
+        <preference name="initialZoom" label="Initial Zoom Level" type="text" description="Initial zoom level. From 1 to 22, where '1' represents the furthest level and '22' the maximum zoom level." default="3" />
         <preference name="minzoom" label="Min Zoom" type="text" description="" default="4" />
     </preferences>
 
     <wiring>
         <inputendpoint name="poiInput" type="text" label="Insert/Update PoI" description="Insert or update a Point of Interest." actionlabel="Map Viewer Insert/Update PoI" friendcode="poi"/>
+        <inputendpoint name="replacePoIs" type="text" label="Replace PoIs" description="Replace all the rendered PoIs by the ones provided in the event." actionlabel="Map Viewer Insert/Update PoI" friendcode="poi poi-list"/>
         <inputendpoint name="deletePoiInput" type="text" label="Delete PoI" description="Removes a point or more point of interests from the map." actionlabel="Map Viewer Delete PoI" friendcode="poi"/>
+
+        <outputendpoint name="selectedPoI" type="text" label="PoI selected" description="A PoI has been selected on the map" friendcode="poi"/>
     </wiring>
 
     <contents src="index.html" useplatformstyle="true"/>
