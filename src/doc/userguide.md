@@ -1,19 +1,35 @@
 ## Introduction
 
-Display a map using an image an a custom coordintes system
+This widget allows you to display a map using an static image. Useful for
+displaying indoor maps and other kind of maps not related to the earth
+surface.
+
+Display markers and geometries inside the map by connecting this widget to other
+widgets/operators. Users will be able to interact with those PoI and geometries
+and those events will be also propagated using the wiring.
+
+This is a simplified version of the `ol3-map` widget, the latter can also be
+used for displaying static maps and can be useful for complex scenarios, e.g.
+scenarios requiring mixing layers or being able to switch between different
+base layers.
 
 ## Settings
 
+- **Initial Zoom Level**: Initial zoom level. From `1` to `22`, where `1`
+  represents the furthest level and `22` the maximum zoom level.
+- **Min Zoom**: Minimal zoom level
+
 ## Wiring
 
-### Data format
+### Data formats
 
-`PoI`:
+- `PoI`:
+
     - `id` (required): `String` with the id of this PoI. This id must be unique
         on the context of the map widget.
     - `icon`: `String` with an icon URL. Only used for `Point` geometries. You
         can also provide an object with icon details:
-        - `url` (required): `String` with an icon URL.
+        - `src` (required): `String` with an icon URL.
         - `anchor`: Two-dimesional `Array` defining the anchor for
             the icon using percentage units (float number between 0 and 1).
             Default value is `[0.5, 0.5]` (icon center).
@@ -48,12 +64,3 @@ Display a map using an image an a custom coordintes system
 
 - **PoI selected**: A PoI has been selected on the map.
 
-## Usage
-
-## Reference
-
-- [FIWARE Mashup](https://mashup.lab.fiware.org/)
-
-## Copyright and License
-
-Apache2
